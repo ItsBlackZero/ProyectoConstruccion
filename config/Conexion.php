@@ -1,15 +1,16 @@
 <?php
-class Conexion {
-    public static function getConexion() {
-         $dsn = 'mysql:host=localhost;port=3306;dbname=' . DBNAME;
-        $conexion = null;
-        try {
-            $conexion = new PDO($dsn, DBUSER, DBPASSWORD);
-             $conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch (Exception $e) {
-            echo $e;
-            die("error " . $e->getMessage());
-        }      
-        return $conexion;
+
+    $host ="localhost";
+    $user = "root";
+    $pass = "1234";
+
+    $db ="proyecto_construccion";
+    $conexion = new mysqli($host,$user,$pass,$db);
+
+    if($conexion->connect_error){
+        echo "conexion fallida";
     }
-}
+
+
+?>
+

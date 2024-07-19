@@ -15,7 +15,7 @@ define("VPRODUCTOS", "view/productos/productos.");
 define("VCATEGORIAS", "view/categorias/categorias.");
 
 // conexion bb
-define("DBNAME","mvc");
+define("DBNAME","proyecto_construccion");
 define("DBUSER","root");
-define("DBPASSWORD","0404");
+define("DBPASSWORD","1234");
 
