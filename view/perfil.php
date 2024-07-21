@@ -1,21 +1,8 @@
-<!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this template
--->
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Página de Inicio</title>
-  <link rel="stylesheet" href="style.css">
-</head>
+<?php require("./layouts/base.php")?>
 <body>
   <header>
     <h1>Logeado</h1>
   </header>
-  
   <main>
     <section id="user-info">
       <h2>Información de Usuario</h2>
@@ -42,7 +29,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this
       </ul>
     </section>
   </main>
-
   <script src="scripts.js"></script>
 </body>
 </html>

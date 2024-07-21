@@ -1,27 +1,41 @@
 
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../assets/style/style.css">
-</head>
+<?php require("./layouts/base.php")?>
 <body>
     <div class="contenedorPrincipal">
         <div class="contenedorLogin">
             <form action="../controller/indexController.php" method="post">
-
-
                 <label for="username">Username:</label>
                 <input type="text" id="username" name="username" required>
                 <br>
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="pasword" required>
                 <br>
-                
+                <a href="recuperarPassword.php">Olvidaste tu clave?</a>
                 <input type="submit" name="login" value="Login">
+                
+
+                <?php
+
+                if(isset($_GET["message"])){
+                    ?>
+                    <div class="alert alert-primary" role="alert">
+                    <?php
+                        switch ($_GET["message"]){
+                            case 'ok':
+                                echo 'Por favor revisa tu correo';
+                                break;
+                            case 'success_password':
+                                echo "inicia sesion con tu nuevo password";
+                            
+
+                        }
+                    ?>
+                    </div>
+                    <?php
+                }
+
+                ?>
+                
             </form>
         </div>
     </div>
