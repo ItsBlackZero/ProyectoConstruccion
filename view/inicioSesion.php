@@ -11,6 +11,7 @@
                 <input type="password" id="password" name="pasword" required>
                 <br>
                 <a href="recuperarPassword.php">Olvidaste tu clave?</a>
+                <a href="registroUsuario.php">Registro</a>
                 <input type="submit" name="login" value="Login">
                 
 

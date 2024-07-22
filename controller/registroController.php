@@ -14,7 +14,7 @@
         $email = $_POST["email"];
         $sql = "INSERT INTO USUARIOS (username, email, pasword) VALUES ('$username', '$email', '$password')";
         if (mysqli_query($conexion, $sql)) {
-            echo "New record created successfully";
+            header("Location:../index.php");
         } else {
             echo "Error: " . $sql . "<br>" . mysqli_error($conexion);
         }

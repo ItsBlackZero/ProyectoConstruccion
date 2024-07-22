@@ -43,157 +43,79 @@ input{
 
 
 /* styles.css post */
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f0f2f5;
-  margin: 0;
-  padding: 0;
+/* Estilo para la barra de navegación */
+.navbar {
+  background-color: #333;
+  overflow: hidden;
+  position: fixed; /* Fija la barra de navegación */
+  top: 0;
+  width: 100%;
+  z-index: 1000; /* Asegura que esté siempre en el frente */
 }
 
-header {
-  background-color: #4267b2;
-  color: white;
-  padding: 10px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-header h1 {
-  margin: 0;
-}
-
-nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-}
-
-nav li {
-  margin-left: 20px;
-}
-
-nav a {
-  color: white;
+.navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
   text-decoration: none;
 }
 
-#post-box {
-  background-color: white;
-  padding: 20px;
-  margin: 20px auto;
-  width: 80%;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.navbar a:hover {
+  background-color: #ddd;
+  color: black;
 }
 
-#post-box textarea {
-  width: 100%;
-  height: 100px;
+/* Añade margen superior para el contenido principal para evitar superposición con la barra de navegación */
+.contenedorPrincipal {
+  display: flex;
+  flex-direction: row;
+  height: calc(100vh - 50px); /* Ajuste según la altura de la barra de navegación */
+  margin-top: 50px; /* Espacio para la barra de navegación fija */
+}
+
+/* Estilo para la sección de publicaciones */
+.publicaciones {
+  flex: 2;
+  overflow-y: auto;
   padding: 10px;
-  box-sizing: border-box;
+  border-right: 1px solid #ccc;
 }
 
-#post-box button {
-  margin-top: 10px;
-  padding: 10px 20px;
-  background-color: #4267b2;
-  color: white;
-  border: none;
-  cursor: pointer;
-}
-
-#feed {
-  width: 80%;
-  margin: 20px auto;
-}
-
-.post {
-  background-color: white;
-  padding: 20px;
-  margin-bottom: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-/* styles.css perfil*/
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f0f2f5;
-  margin: 0;
-  padding: 0;
+/* Estilo para la sección de usuarios y formulario */
+.sidebar {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  overflow-y: auto;
+  padding: 10px;
 }
 
-header {
-  background-color: #4267b2;
-  color: white;
-  padding: 10px 20px;
-  width: 100%;
-  text-align: center;
-}
-
-main {
-  display: flex;
-  justify-content: space-between;
-  width: 80%;
-  margin: 20px auto;
-}
-
-section {
-  background-color: white;
-  padding: 20px;
-  margin: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-#user-info, #user-posts, #friends-list {
-  flex: 1;
-}
-
-#user-posts {
-  flex: 2;
-}
-
-#post-box {
+/* Estilo para formularios y secciones */
+form, .section {
   margin-bottom: 20px;
 }
 
-#post-box textarea {
-  width: 100%;
-  height: 100px;
-  padding: 10px;
-  box-sizing: border-box;
-}
-
-#post-box button {
-  margin-top: 10px;
-  padding: 10px 20px;
-  background-color: #4267b2;
-  color: white;
-  border: none;
-  cursor: pointer;
-}
-
 .post {
-  background-color: white;
-  padding: 20px;
-  margin-bottom: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.error{
-
-  background-color: rgb(130, 57, 57);
-  color: black;
+  border: 1px solid #ccc;
   padding: 10px;
-  width: 95%;
-  border-radius: 5px;
-  margin: 20px auto;
+  margin-bottom: 10px;
 }
 
-.error {
-  color: red;
-  font-weight: bold;
-  margin: 10px 0;
+/* Responsivo: ajusta el diseño en pantallas pequeñas */
+@media (max-width: 768px) {
+  .contenedorPrincipal {
+      flex-direction: column; /* Cambia a diseño de columna en pantallas pequeñas */
+  }
+
+  .publicaciones, .sidebar {
+      flex: 1;
+      overflow-y: auto;
+  }
+
+  .publicaciones {
+      border-right: none;
+      border-bottom: 1px solid #ccc;
+  }
 }
