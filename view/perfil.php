@@ -58,8 +58,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_comment'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil</title>
-    <link rel="stylesheet" href="../assets/style/perfil_post.css">
-    <link rel="stylesheet" href="../assets/perfil_post.css">
+    <link rel="stylesheet" href="../assets/style/reset.css">
+    <link rel="stylesheet" href="../assets/style/perfil_style.css">
 
 </head>
 <body>
@@ -73,33 +73,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_comment'])) {
     <div class="contenedorPrincipal">
         <!-- Contenedor de Usuario y Amigos -->
         <div class="contenedorUsuarioAmigos">
-            <h1>Perfil de <?php echo htmlspecialchars($user['username']); ?></h1>
-            <p>Email: <?php echo htmlspecialchars($user['email']); ?></p>
+            <section class="contenedorPerfil">
+                <h1>Perfil de <?php echo htmlspecialchars($user['username']); ?></h1>
+                <p>Email: <?php echo htmlspecialchars($user['email']); ?></p>
+            </section>
 
-            <div class="section">
-                <h2>Buscar Amigos</h2>
-                <form action="perfil.php" method="get">
-                    <input type="text" id="search" name="search" placeholder="Buscar amigos" value="<?php echo htmlspecialchars($search); ?>">
-                    <button type="submit">Buscar</button>
-                </form>
-            </div>
-
-            <h2>Amigos</h2>
-            <ul>
-                <?php while ($friend = $friends->fetch_assoc()): ?>
-                    <li><?php echo htmlspecialchars($friend['username']); ?></li>
-                <?php endwhile; ?>
-            </ul>
         </div>
-
+        
         <!-- Contenedor de Publicaciones -->
         <div class="contenedorPublicaciones">
             <h2>Mis Publicaciones</h2>
             <?php while ($post = $posts->fetch_assoc()): ?>
-                <div class="post">
+                <div class="contenedorPublicacion">
                     <h3><?php echo htmlspecialchars($post['titulo']); ?></h3>
                     <p><?php echo htmlspecialchars($post['contenido']); ?></p>
-                    <p><i>Publicado por: <?php echo htmlspecialchars($post['username']); ?></i></p>
+                    <p><i><strong>Publicado por: <?php echo htmlspecialchars($post['username']); ?></strong></i></p>
 
                     <h4>Comentarios</h4>
                     <?php
@@ -111,20 +99,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['add_comment'])) {
                     ?>
                     <ul>
                         <?php while ($comment = $comments->fetch_assoc()): ?>
-                            <li><?php echo htmlspecialchars($comment['contenido']); ?> - <i><?php echo htmlspecialchars($comment['username']); ?>, <?php echo htmlspecialchars($comment['create_at']); ?></i></li>
+                            <li><?php echo htmlspecialchars($comment['contenido']); ?> - <i><strong><?php echo htmlspecialchars($comment['username']); ?>, <?php echo htmlspecialchars($comment['create_at']); ?></strong></i></li>
                         <?php endwhile; ?>
                     </ul>
 
                     <!-- Formulario para agregar un comentario -->
-                    <form action="../controller/agregarComentario.php" method="post">
+                    <form action="../controller/agregarComentario.php" method="post" >
                         <input type="hidden" name="id_foros" value="<?php echo $post['id_foros']; ?>">
                         <input type="hidden" name="return_url" value="../view/perfil.php">
-                        <textarea name="contenido" required></textarea>
-                        <input type="submit" name="add_comment" value="Comentar">
+                        <textarea class="contenedorComentario" name="contenido" required></textarea><br>
+                        <input type="submit" name="add_comment" value="Comentar" class="buttonComentar">
                     </form>
                 </div>
             <?php endwhile; ?>
         </div>
+        <div class="contenedorAmigos">
+                <h2>Buscar Amigos</h2>
+                <form action="perfil.php" method="get">
+                    <input type="text" id="search" name="search" placeholder="Buscar amigos" value="<?php echo htmlspecialchars($search); ?>">
+                    <button type="submit">Buscar</button>
+                </form>
+                <h2>Amigos</h2>
+                <ul>
+                <?php while ($friend = $friends->fetch_assoc()): ?>
+                    <li><?php echo htmlspecialchars($friend['username']); ?></li>
+                <?php endwhile; ?>
+                </ul>
+            </div>
     </div>
 </body>
 </html>
